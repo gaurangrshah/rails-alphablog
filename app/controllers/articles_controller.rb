@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  
+    before_action :set_article, only: [:edit, :update, :show, :destroy]
+
   def index
     @articles = Article.all # list of all available articles
   end
@@ -22,16 +23,15 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find(params[:id]) # find article to show by article:id accessed via url_params
+    # @article = Article.find(params[:id])
   end
 
   def edit
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
-
+    # @article = Article.find(params[:id])
     if @article.update(article_params_whitelist) # attempt to update article
       flash[:notice]= "Your article was successfully updated."
       redirect_to article_path(@article) # instance of article gets passed into the view
@@ -42,13 +42,15 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     flash[:notice] = "Article #{params[:id]} has been deleted."
     redirect_to articles_path
   end
 
   private
+    def set_article # this method will get called before each action
+      @article = Article.find(params[:id])
+    end
     def article_params_whitelist
       #requires the article, and permits the values we're expecting for it from the form
       params.require(:article).permit(:title, :description) 
