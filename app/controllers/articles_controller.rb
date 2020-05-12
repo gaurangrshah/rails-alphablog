@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
   
+  def index
+    @articles = Article.all # list of all available articles
+  end
+
   def new
     @article = Article.new # sets the article instance variable
   end
