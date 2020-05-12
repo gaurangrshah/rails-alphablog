@@ -21,6 +21,22 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id]) # find article to show by article:id accessed via url_params
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params_whitelist) # attempt to update article
+      flash[:notice]= "Your article was successfully updated."
+      redirect_to article_path(@article) # instance of article gets passed into the view
+    else
+      flash[:notice]= "Sorry there was an error updating this article."
+      render 'edit' # if errors render new article route again
+    end
+  end
+
   private
     def article_params_whitelist
       #requires the article, and permits the values we're expecting for it from the form
