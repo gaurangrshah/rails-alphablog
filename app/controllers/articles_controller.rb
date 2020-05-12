@@ -41,6 +41,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "Article #{params[:id]} has been deleted."
+    redirect_to articles_path
+  end
+
   private
     def article_params_whitelist
       #requires the article, and permits the values we're expecting for it from the form
