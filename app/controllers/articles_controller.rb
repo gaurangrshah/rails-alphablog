@@ -6,8 +6,19 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params_whitelist)
-    @article.save
-    redirect_to_articles_show(@article) # instance of article gets passed into the view
+
+    if @article.save # attempt to save article
+      flash[:notice]= "Your article was successfully saved."
+      redirect_to article_path(@article) # instance of article gets passed into the view
+    else
+      flash[:notice]= "Sorry there was an error saving this article."
+      render 'new' # if errors render new article route again
+    end
+
+  end
+  
+  def show
+    @article = Article.find(params[:id]) # find article to show by article:id accessed via url_params
   end
 
   private
