@@ -23,8 +23,8 @@ h1 {
 .jumbotron {
   background-image: url('../images/italy-5140706.jpg');
   background-size: cover;
-  height: calc(100vh - ($footer-height + $header-height));
-  width: 100vw;
+  height: calc(100vh - 166px);
+  width: 100%;
   h1 {
     color: $secondary;
     text-align: center;
