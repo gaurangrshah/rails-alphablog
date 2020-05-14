@@ -1,3 +1,60 @@
+body, html {
+  margin: 0px;
+  padding: 0px;
+}
+
 h1 { 
   color: red;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: rgb(107, 107, 107);
+  text-decoration: none;
+}
+
+.jumbotron {
+  background-image: url('../images/italy-5140706.jpg');
+  background-size: cover;
+  height: calc(100vh - ($footer-height + $header-height));
+  width: 100vw;
+  h1 {
+    color: $secondary;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    letter-spacing: -1px;
+    font-weight: bold;
+  }
+  .btn-xlg {
+    color: white;
+    background-color: $green;
+    border-color: $green;
+  }
+}
+
+footer {
+  margin-top: 45px;
+  margin-bottom: 0;
+  height: $footer-height;
+  padding: 0.5em 6em 0 6em;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary;
+  border-top: 1px solid green;
+  nav {
+    ul {
+      list-style-type: none;
+      li {
+        margin-left: .5em;
+      }
+    }
+  }
 }
