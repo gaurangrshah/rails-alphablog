@@ -13,10 +13,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params_whitelist)
 
     if @article.save # attempt to save article
-      flash[:notice]= "Your article was successfully saved."
+      flash[:success]= "Your article was successfully saved."
       redirect_to article_path(@article) # instance of article gets passed into the view
     else
-      flash[:notice]= "Sorry there was an error saving this article."
+      flash[:warning]= "Sorry there was an error saving this article."
       render 'new' # if errors render new article route again
     end
 
@@ -33,17 +33,17 @@ class ArticlesController < ApplicationController
   def update
     # @article = Article.find(params[:id])
     if @article.update(article_params_whitelist) # attempt to update article
-      flash[:notice]= "Your article was successfully updated."
+      flash[:success]= "Your article was successfully updated."
       redirect_to article_path(@article) # instance of article gets passed into the view
     else
-      flash[:notice]= "Sorry there was an error updating this article."
+      flash[:warning]= "Sorry there was an error updating this article."
       render 'edit' # if errors render new article route again
     end
   end
 
   def destroy
     @article.destroy
-    flash[:notice] = "Article #{params[:id]} has been deleted."
+    flash[:success] = "Article #{params[:id]} has been deleted."
     redirect_to articles_path
   end
 
