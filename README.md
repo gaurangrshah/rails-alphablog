@@ -2,7 +2,7 @@
 
 use with gitpod:
 ```
-https://gitpod.io#https://github.com/gaurangrshah/rails-starter
+https://gitpod.io#https://github.com/gaurangrshah/rails-alphablog
 ```
 
 to use locally: 
