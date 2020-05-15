@@ -33,3 +33,4 @@ When using gitpod you must comment out the following whitelisting (which was add
 ```
 
 
+remove zsh
