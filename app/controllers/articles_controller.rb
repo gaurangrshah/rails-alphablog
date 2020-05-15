@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params_whitelist)
+    
+    @article.user = User.first # ensures that each article has a user associated.
 
     if @article.save # attempt to save article
       flash[:success]= "Your article was successfully saved."
