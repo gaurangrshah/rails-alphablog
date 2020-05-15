@@ -1,13 +1,27 @@
-<h2 align="center">Title: <%= @article.title %></h2>
-<div class="well col-xs-8 offset-2">
-  <h4 class="center description"><strong>Description:</strong></h4>
-  <hr>
-  <%= simple_format(@article.description) %>
-  <div class="article-actions">
-    <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
-    <%= link_to "Delete this article", article_path(@article), method: :delete, 
-                                      data: { confirm: "Are you sure you want to delete the article?"}, 
-                                      class: "btn btn-xs btn-danger" %>  
-    <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>  
+  <div class="card text-center mb-3">
+    
+    <div class="card-header">
+      <div class="card-title">
+        <%= @article.id %>
+        <h3><%= @article.title%></h3>
+      </div>
+    </div>  
+
+    <div class="card-body">
+      <%= simple_format(@article.description) %>
+    </div>
+      <div class="card-footer d-flex justify-content-between align-items-end">
+        <div class="article-author text-left">
+          <small>Author: <%= @article.user.username if @article.user%> <br/></small>
+          <smalL>Published: <%= time_ago_in_words(@article.created_at) %> ago</small> <br/>
+          <smalL>Last Updated: <%= time_ago_in_words(@article.updated_at) %> ago</small> <br/>
+        </div>
+        <div class="article-actions">
+          <%= link_to "✏️", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+          <%= link_to "❌", article_path(@article), method: :delete, 
+                                            data: { confirm: "Are you sure you want to delete the article?"}, 
+                                            class: "btn btn-xs btn-danger" %>  
+          <%= link_to "🔍", articles_path, class: "btn btn-xs btn-success" %>   
+        </div>
+      </div>   
   </div>
-</div>
