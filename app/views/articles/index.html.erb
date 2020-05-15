@@ -1,24 +1,25 @@
-<div class="container">
-  <h1>Articles</h1>
-
-  <p><%= link_to "Create New Article", new_article_path %></p>
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Actions</th>
-    </tr>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.id %></td>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= link_to "Edit", edit_article_path(article) %>
-        <%= link_to "Show", article_path(article) %>
-        <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %>
-        </td>
-      </tr>
-    <% end %>  
-  </table>  
-</div>
+  <h1 align="center">All articles</h1>
+  <div class="col-8 offset-2 text-right">
+    <p><%= link_to "Create New Article", new_article_path %></p>
+  <div>
+  <% @articles.each do |article| %>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div class="well d-flex justify-content-around align-items-center">
+          <div class="article-id">
+            <%= link_to article.id %>
+          </div>
+          <div class="article-title">
+            <%= link_to article.title, article_path(article) %>
+          </div>
+          <div class="article-actions mt-4">
+            <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete this article", article_path(article), method: :delete, 
+                                              data: { confirm: "Are you sure you want to delete the article?"}, 
+                                              class: "btn btn-xs btn-danger" %>  
+            <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>  
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>  
