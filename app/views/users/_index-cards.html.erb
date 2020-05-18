@@ -1,0 +1,17 @@
+<a href="<%= user_path(obj) %>">
+  <div class="card text-center mt-3 mr-3">
+
+    <div class="card-title">
+      <%= obj.username %>
+    </div>
+    
+    <div class="card-body">
+      <%= gravatar_for(obj) %>
+    </div>
+
+    <div class="card-footer">
+      <small><%= pluralize(obj.articles.count, "article") if obj.articles%></small>
+    </div>    
+
+  </div>
+</a>

@@ -2,7 +2,9 @@ class ArticlesController < ApplicationController
     before_action :set_article, only: [:edit, :update, :show, :destroy] #runs before each defined action
 
   def index
-    @articles = Article.all # list of all available articles
+    # list of all available articles
+    # @articles = Article.paginate(page: params[:page]) # paginate articles to default # of articles per page
+    @articles = Article.paginate(page: params[:page], per_page: 5) # paginate articles to 5 per page.
   end
 
   def new
