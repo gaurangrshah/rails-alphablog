@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def index
     # list of all available articles
     # @articles = Article.paginate(page: params[:page]) # paginate articles to default # of articles per page
-    @articles = Article.paginate(page: params[:page], per_page: 5) # paginate articles to 5 per page.
+    @articles = Article.paginate(page: params[:page], per_page: 1) # paginate articles to 5 per page.
   end
 
   def new
